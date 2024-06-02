@@ -104,7 +104,7 @@ def move(direction, field, score):
                 # (якщо два елементи == 0, то робити зміщення немає сенсу)
                 elif field[x1][y1] == field[x2][y2] and (field[x1][y1] + field[x2][y2]) != 0:
                     # якщо в комірці ще не було об’єднання, то робимо зміщення
-                    if (x1, y1) not in already_shifted:
+                    if (x1, y1) not in already_shifted and (x2, y2) not in already_shifted:
                         field[x1][y1] += field[x2][y2]
                         field[x2][y2] = 0
                         score += field[x1][y1]              # додаємо суму до загального рахунку
