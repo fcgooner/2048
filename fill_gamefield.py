@@ -1,4 +1,4 @@
-from random import choice, sample
+from random import choice, randint, sample
 from print_gamefield import fprint
 
 
@@ -35,7 +35,12 @@ def fill_gamefield(field: list, score: int, first_iteration: bool = False, is_mo
             if is_moved:
                 # якщо змінилось, обираємо випадкову пусту комірку і заповнюємо її значенням 2
                 x, y = (choice(empty_space))
-                field[x][y] = 2
+                # генеруємо випадкове число від 1 до 100
+                chance = randint(1, 100)
+                if chance < 91:         # 90% шанс на пусте місце поставити 2
+                    field[x][y] = 2
+                else:                   # 10% шанс на пусте місце поставити 4
+                    field[x][y] = 4
                 empty_space.remove((x, y))  # видаляємо комірку зі списку пустих комірок
 
     # якщо це перша ітерація, або якщо ігрове поле змінилось після дій гравця, виводимо поле в консоль
